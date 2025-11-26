@@ -1,73 +1,12 @@
-# React + TypeScript + Vite
+Backend service now exposes /api/meals REST endpoints with centralized config, LRU-ish in-memory cache, and Express middleware for health checks and error handling, so the UI can use simplified payloads instead of hitting TheMealDB directly (server/src/config.ts, server/src/index.ts, server/src/services/mealService.ts).
+Frontend replaces the scaffold with a responsive dashboard: search, category cards, random meal, and detailed recipe view (ingredients, steps, YouTube embed) all wired to the proxy API (client/src/App.tsx, client/src/App.css, client/src/api.ts, client/src/types.ts). Global styling now targets a light theme aligned with the new layout (client/src/index.css).
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Testing--
+server: npm run build
+client: npm run build (Vite warns that Node ≥20.19 is preferred; upgrade when possible)
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Run locally--
+1)cd server && npm install (already done) → npm run dev
+2)cd client && npm install (already done) → npm run dev (set VITE_API_BASE_URL if API not on default http://localhost:4000/api)
+3)Open the Vite URL; ensure the backend is running first.
+Next: finish TODO Test app end-to-end by running both dev servers together and verifying category + search + random flows in the browser.
