@@ -1,0 +1,239 @@
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #1f2933;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+header p {
+  margin: 0.5rem 0 0;
+  color: #52606d;
+}
+
+.random-btn {
+  background: linear-gradient(135deg, #ff914d, #ff5757);
+  border: none;
+  color: white;
+  padding: 0.9rem 1.3rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 10px 20px rgba(255, 87, 87, 0.3);
+}
+
+.search-bar {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.search-bar input {
+  flex: 1;
+  border: 1px solid #d5d6d7;
+  border-radius: 12px;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+}
+
+.search-bar button {
+  border: none;
+  background: #2563eb;
+  color: white;
+  border-radius: 12px;
+  padding: 0.8rem 1.4rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+section {
+  margin-bottom: 2.5rem;
+}
+
+section h2 {
+  margin-bottom: 1rem;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1rem;
+}
+
+.category-card {
+  border: 1px solid #e3e4e8;
+  border-radius: 14px;
+  background: white;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.category-card:hover,
+.category-card.selected {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(31, 41, 55, 0.1);
+}
+
+.category-card img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.category-card span {
+  font-weight: 600;
+  text-align: center;
+}
+
+.status-card {
+  border-radius: 16px;
+  padding: 1.5rem;
+  background: #f1f5f9;
+  text-align: center;
+}
+
+.status-card button {
+  margin-top: 1rem;
+  background: none;
+  border: 1px solid #d5d6d7;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.status-card.error {
+  background: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fca5a5;
+}
+
+.meals-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+
+.meal-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 10px 20px rgba(31, 35, 37, 0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+.meal-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.meal-card h3 {
+  margin: 1rem;
+  font-size: 1.1rem;
+}
+
+.meal-card button {
+  margin: 0 1rem 1rem;
+  border: none;
+  background: #2563eb;
+  color: white;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.meal-detail {
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  padding: 2rem;
+  background: white;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.1);
+}
+
+.back-btn {
+  border: none;
+  background: none;
+  color: #2563eb;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.meal-detail-content {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.meal-detail-content img {
+  width: min(280px, 100%);
+  border-radius: 16px;
+}
+
+.meal-detail ul {
+  padding-left: 1.2rem;
+  margin: 0;
+}
+
+.meal-detail ul li {
+  margin-bottom: 0.25rem;
+}
+
+.instructions {
+  white-space: pre-wrap;
+  line-height: 1.6;
+}
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  margin-top: 1.5rem;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 16px;
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .search-bar {
+    flex-direction: column;
+  }
+
+  .search-bar button {
+    width: 100%;
+  }
+}
